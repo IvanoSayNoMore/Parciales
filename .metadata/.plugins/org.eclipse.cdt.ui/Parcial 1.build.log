@@ -1,0 +1,14 @@
+12:02:55 **** Rebuild of configuration Debug for project Parcial 1 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\ArrayZona.o" "..\\src\\ArrayZona.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Parcial1 Cencistas.o" "..\\src\\Parcial1 Cencistas.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\utnInPuts.o" "..\\src\\utnInPuts.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\PuntoDeMenu.o" "..\\src\\PuntoDeMenu.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\ArrayCencista.o" "..\\src\\ArrayCencista.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\SortHead.o" "..\\src\\SortHead.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Calculos.o" "..\\src\\Calculos.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\printList.o" "..\\src\\printList.c" 
+gcc -o "Parcial 1.exe" "src\\ArrayCencista.o" "src\\ArrayZona.o" "src\\Calculos.o" "src\\Parcial1 Cencistas.o" "src\\PuntoDeMenu.o" "src\\SortHead.o" "src\\printList.o" "src\\utnInPuts.o" 
+
+12:02:58 Build Finished. 0 errors, 0 warnings. (took 2s.722ms)
+
