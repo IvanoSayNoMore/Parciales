@@ -25,7 +25,7 @@
 #define INACTIVO -1
 #define LIBERADO 0
 
-int printListCensistas(Person* listPerson,int lenPerson)
+int printListCensistas(Person* listPerson[],int lenPerson)
 {
 	int retorno=RETORNONEGATIVO;
 	if(listPerson!=NULL)
@@ -37,7 +37,7 @@ int printListCensistas(Person* listPerson,int lenPerson)
 
 		for(int i=0;i<lenPerson;i++)
 		{
-			if(listPerson[i].isEmpty==FULL)
+			if(listPerson[i]!=NULL)
 			{
 
 				printOneCensista(&listPerson[i]);

@@ -32,7 +32,7 @@
 #define REINTENTOS 3
 #define RETORNOPOSITIVO 0
 #define RETORNONEGATIVO -1
-
+/*
 int menuItemEnterPerson(Person* listPerson,int lenPerson)
 {
 	int retorno=RETORNONEGATIVO;
@@ -56,6 +56,73 @@ int menuItemEnterPerson(Person* listPerson,int lenPerson)
 			puts("No hay espacios para mas censistas");
 		}
 
+	}
+	return retorno;
+}*/
+
+int menuItemEnterPerson(Person* listPerson[],int lenPerson)
+{
+	int retorno=RETORNONEGATIVO;
+	int auxEspacioArrayPuntero;
+	char auxName[MAXIMOCADENA];
+	char auxLastName[MAXIMOCADENA];
+	char direccion[MAXIMOCADENA];
+	int auxDia;
+	int auxAnio;
+	int auxMes;
+	int auxEdad;
+	int auxId;
+	Person auxPerson;//buffer
+	Person* persona;// * pC
+//	Person* punteroAux;
+
+	if(listPerson != NULL && lenPerson > 0)
+	{
+		if(cen_getEmptyIndexConArrayPunteros(listPerson, &auxEspacioArrayPuntero, lenPerson)==RETORNOPOSITIVO)
+		{
+			if(ingresPerson(auxName, auxLastName, direccion,
+								&auxAnio, &auxMes, &auxDia, &auxEdad, MAXIMOCADENA)==RETORNOPOSITIVO)
+			{
+				contadorId(&auxId);
+				auxPerson.idCensista=auxId;
+				strncpy(auxPerson.dataPerson.lastName,auxLastName,sizeof(auxPerson.dataPerson.lastName));
+				strncpy(auxPerson.dataPerson.name,auxName,sizeof(auxPerson.dataPerson.name));
+				auxPerson.fechaNacimiento.dia=auxDia;
+				auxPerson.fechaNacimiento.mes=auxMes;
+				auxPerson.fechaNacimiento.anio=auxAnio;
+				auxPerson.dataPerson.edad=auxEdad;
+				strncpy(auxPerson.direccion.direccion,direccion,sizeof(auxPerson.direccion.direccion));
+				auxPerson.estadoActual=LIBERADO;
+				auxPerson.isEmpty=FULL;
+
+			}
+			persona=cen_new();
+			if(persona != NULL)
+			{
+				*persona=auxPerson;
+				listPerson[auxEspacioArrayPuntero]=persona;
+				retorno=RETORNOPOSITIVO;
+			}
+			/*if(validAddPerson(persona, lenPerson)==RETORNOPOSITIVO)
+				{
+					persona=auxPerson;
+					listPerson[auxEspacioArrayPuntero]=persona;
+					*persona = auxPerson;
+				}
+				else
+				{
+					puts("Error al cargar el censista.");
+				}*/
+		}
+		else
+		{
+			puts("No hay espacios para mas censistas");
+		}
+
+	}
+	else
+	{
+		puts("Error");
 	}
 	return retorno;
 }
@@ -358,7 +425,7 @@ int menuItemAddDataZona(datoZona* listZona,datosCenso* listCenso,Person* listPer
 	return retorno;
 }
 
-int menuItemPrintCensistas(Person* listPerson,int lenPerson)
+int menuItemPrintCensistas(Person* listPerson[],int lenPerson)
 {
 	int retorno=RETORNONEGATIVO;
 	int auxOpcion;
@@ -413,7 +480,7 @@ int menuItemPrintCensistas(Person* listPerson,int lenPerson)
 
 	return retorno;
 }
-
+/*
 int menuItemHardCode(datoZona* listZona,datosCenso* listCenso,Person* listPerson, int lenZona,int lenPerson)
 {
 	int retorno=RETORNONEGATIVO;
@@ -535,7 +602,7 @@ int menuItemHardCode(datoZona* listZona,datosCenso* listCenso,Person* listPerson
 	return retorno;
 
 }
-
+*/
 int menuItemOrdenamientos(datoZona* listZona,datosCenso* listCenso,Person* listPerson, int lenZona,int lenPerson)
 {
 	int retorno=RETORNONEGATIVO;

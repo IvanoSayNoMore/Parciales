@@ -46,6 +46,60 @@ int initPerson(Person* list, int lenPerson)
 	return retorno;
 }
 
+
+
+Person* cen_new(void)
+{
+	Person* pPerson;
+	pPerson = (Person*) malloc(sizeof(Person));
+	if(pPerson != NULL)
+	{
+		//pPerson->
+		return pPerson;
+	}
+	else
+	{
+		return pPerson;
+	}
+}
+
+int cen_inicializarArrayPunteros(Person* array[],int lenCensistas)
+{
+	int retorno=RETORNONEGATIVO;
+	if(array!=NULL)
+	{
+		int i;
+		for(i=0;i<lenCensistas;i++)
+		{
+			array[i] = NULL;
+		}
+		retorno=RETORNOPOSITIVO;
+	}
+
+	return retorno;
+}
+
+int cen_getEmptyIndexConArrayPunteros(Person* arrayPerson[],int* posicion,int lenCensistas)
+{
+	int retorno=RETORNONEGATIVO;
+	int i;
+	if(arrayPerson != NULL && lenCensistas > 0)
+	{
+		for(i=0;i<lenCensistas;i++)
+		{
+			if(arrayPerson[i]==NULL)
+			{
+				retorno=RETORNOPOSITIVO;
+				*posicion=i;
+				break;
+			}
+		}
+	}
+	return retorno;
+}
+
+
+
 int ingresPerson(char name[],char lastName[],char direccion[],int* anio,int* mes,int* dia, int* edad,int lenCadena)
 {
 	int retorno=RETORNONEGATIVO;
@@ -148,11 +202,45 @@ int ingresPerson(char name[],char lastName[],char direccion[],int* anio,int* mes
 
 }
 
+
+int validAddPerson(Person* auxPerson,int lenPerson)
+{
+	int retorno=RETORNONEGATIVO;
+	char auxName[MAXIMOCADENA];
+	char auxLastName[MAXIMOCADENA];
+	char direccion[MAXIMOCADENA];
+	int auxDia;
+	int auxAnio;
+	int auxMes;
+	int auxEdad;
+	int auxId;
+	//Person* punteroPerson;
+	//punteroPerson=&auxPerson;
+
+	if(lenPerson > 0)
+	{
+		if(ingresPerson(auxName, auxLastName, direccion,
+							&auxAnio, &auxMes, &auxDia, &auxEdad, MAXIMOCADENA)==RETORNOPOSITIVO)
+		{
+			contadorId(&auxId);
+			if(addPerson(auxPerson, auxId, auxName, auxLastName,
+					direccion, auxDia, auxMes, auxAnio, auxEdad)==RETORNOPOSITIVO)
+			{
+				printf("Alta exitosa con el ID numero %d\n",auxId);
+				retorno=RETORNOPOSITIVO;
+			}
+		 }
+	 }
+	return retorno;
+
+}
+
+
 int addPerson(Person* person, int id, char name[],char lastName[],char direccion[],int dia,int mes, int anio,int edad)
 {
 	int retorno=RETORNONEGATIVO;
 
-	if(person!=NULL &&  name!=NULL && lastName!= NULL)
+	if(name!=NULL && lastName!= NULL)
 	{
 		person->idCensista=id;
 		strncpy(person->dataPerson.lastName,lastName,sizeof(person->dataPerson.lastName));
@@ -411,32 +499,6 @@ int deletPerson(Person* person)
 		retorno=RETORNOPOSITIVO;
 	}
 
-	return retorno;
-}
-
-int validAddPerson(Person* listPerson,int lenPerson)
-{
-	int retorno=RETORNONEGATIVO;
-	char auxName[MAXIMOCADENA];
-	char auxLastName[MAXIMOCADENA];
-	char direccion[MAXIMOCADENA];
-	int auxDia;
-	int auxAnio;
-	int auxMes;
-	int auxEdad;
-	int auxId;
-	if(ingresPerson(auxName, auxLastName, direccion,
-						&auxAnio, &auxMes, &auxDia, &auxEdad, MAXIMOCADENA)==RETORNOPOSITIVO)
-	{
-		contadorId(&auxId);
-		if(addPerson(listPerson, auxId, auxName, auxLastName,
-				direccion, auxDia, auxMes, auxAnio, auxEdad)==RETORNOPOSITIVO)
-		{
-			printf("Alta exitosa con el ID numero %d\n",auxId);
-			retorno=RETORNOPOSITIVO;
-		}
-
-	}
 	return retorno;
 }
 

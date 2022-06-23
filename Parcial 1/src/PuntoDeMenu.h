@@ -8,7 +8,7 @@
 #ifndef PUNTODEMENU_H_
 #define PUNTODEMENU_H_
 
-int menuItemEnterPerson(Person* listPerson,int lenPerson);
+int menuItemEnterPerson(Person* listPerson[],int lenPerson);
 int menuItemChangePerson(Person* listPerson, int lenPerson);
 int menuItemDeletPerson(Person* listPerson, int lenPerson);
 int menuItemAddZona(datoZona* listZona,  localidad* localidad,int lenZona,int lenLocalidad);

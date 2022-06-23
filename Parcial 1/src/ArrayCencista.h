@@ -36,6 +36,11 @@ typedef struct{
 }Person;
 
 
+//Memoria dinamica
+Person* cen_new(void);
+int cen_inicializarArrayPunteros(Person* array[],int lenCensistas);
+int cen_getEmptyIndexConArrayPunteros(Person* arrayPerson[],int* posicion,int lenCensistas);
+
 
 /**
  * @biref Inicializa array del tipo Person

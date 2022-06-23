@@ -26,6 +26,12 @@
 
 int main(void) {
 	setbuf(stdout, NULL);
+
+	//Memoria Dinamica
+   // Person* auxPerson;
+    Person* pPerson[MAXIMOCENSISTAS];
+    cen_inicializarArrayPunteros(pPerson, MAXIMOCENSISTAS);
+
     int salir;
     int opcion;
 
@@ -54,7 +60,9 @@ int main(void) {
 			{
 
 			case 1://Cargar Censista
-				menuItemEnterPerson(datosPersona, MAXIMOCENSISTAS);
+				//menuItemEnterPerson(datosPersona, MAXIMOCENSISTAS);
+				menuItemEnterPerson(pPerson, MAXIMOCENSISTAS);
+
 				break;
 
 			case 2://Modificar
@@ -78,7 +86,7 @@ int main(void) {
 				break;
 
 			case 7://Mostrar Censistas
-				menuItemPrintCensistas(datosPersona, MAXIMOCENSISTAS);
+				menuItemPrintCensistas(pPerson, MAXIMOCENSISTAS);
 				break;
 			case 8:
 				printAllZone(datosZona, datosPersona, datosCenso, localidades, MAXIMOCENSISTAS, MAXIMOLOCALIDADES, MAXIMOZONAS);
@@ -88,7 +96,7 @@ int main(void) {
 				menuItemInformes(datosZona, datosCenso, datosPersona, localidades, MAXIMOZONAS, MAXIMOCENSISTAS);
 				break;
 			case 10://LA PRUEBA DE FUEGO
-				menuItemHardCode(datosZona, datosCenso, datosPersona, MAXIMOZONAS, MAXIMOCENSISTAS);
+			//	menuItemHardCode(datosZona, datosCenso, datosPersona, MAXIMOZONAS, MAXIMOCENSISTAS);
 				break;
 			case 11:
 				menuItemOrdenamientos(datosZona, datosCenso, datosPersona, MAXIMOZONAS, MAXIMOCENSISTAS);

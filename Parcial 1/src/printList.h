@@ -14,7 +14,7 @@ void printOneCensista(Person* person);
 
 int printLocalidad(localidad* localidad,int lenLocalidad);
 
-int printListCensistas(Person* listPerson,int lenPerson);
+int printListCensistas(Person* listPerson[],int lenPerson);
 
 int printAllZone(datoZona* listDatoZona,Person* listPerson,datosCenso* listdatosCenso,localidad* localidad,int lenPerson,int lenLocalidad,int lenDatoCenso);
 
