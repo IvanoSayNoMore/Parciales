@@ -204,3 +204,4 @@ int Passenger_getEstadoVuelo(Passenger* this,char* statusFlight)
 	return retorno;
 }
 
+

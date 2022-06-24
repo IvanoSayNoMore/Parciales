@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "LinkedList.h"
+#include "utnInPuts.h"
 
 #define RETORNOPOSITIVO 0
 #define RETORNONEGATIVO -1
@@ -543,5 +544,78 @@ int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order)
 
     return returnAux;
 
+}
+
+LinkedList* ll_filter(LinkedList * this, int (*fn)(void* element))
+{
+
+	void* pAux;
+	int criterioOk;
+	LinkedList* listaPasajerosXEstado= ll_newLinkedList();
+
+	if(this != NULL && fn != NULL)
+	{
+		for(int i=ll_len(this); i >= 0; i--)
+		{
+			pAux = ll_get(this,i);
+			if(pAux != NULL)
+			{
+				criterioOk = fn(pAux);
+				if(criterioOk == 0)
+				{
+					ll_add(listaPasajerosXEstado, pAux);
+				}
+			}
+		}
+
+	}
+	return listaPasajerosXEstado;
+}
+
+int ll_count(LinkedList* this, int (*fn)(void* element))
+{
+	void* pAux;
+	int criterioOk;
+	int retorno=0;
+
+	int auxTipo;
+
+	utnGetNumero(&auxTipo, "\nIngrese el tipo a contar.\n1- FirstClass\n2-ExecutiveClass\n3-EconomyClass\n .\n","Reintente TIPO\n", "Error. Hay 3 tipos maximos. Desea reintentar?\n", 1,3, 3);
+	//controller_convierteOpcionAcadena(auxTipo, tipoAordenar,"FirstClass","ExecutiveClass","EconomyClass","");
+	if(this != NULL && fn != NULL)
+	{
+		for(int i=ll_len(this); i >= 0; i--)
+		{
+			pAux = ll_get(this,i);
+			if(pAux != NULL)
+			{
+				criterioOk=fn(pAux);
+				if(criterioOk==auxTipo)
+				{
+					retorno++;
+				}
+				/*
+				switch(criterioOk)
+				{
+				case 1:
+					FirstClass++;
+				break;
+
+				case 2:
+					ExecutiveClass++;
+				break;
+
+				case 3:
+					EconomyClass++;
+				break;
+				}*/
+			}
+		}
+	}
+	//printf("\nPasajeros FirstClass: %d\nPasajeros ExecutiveClass: %d\nPasajeros EconomyClass: %d\n",FirstClass,ExecutiveClass,EconomyClass);
+
+	//retorno=FirstClass+ExecutiveClass+EconomyClass;
+
+	return retorno;
 }
 

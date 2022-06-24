@@ -615,3 +615,63 @@ int controller_conversorABinario(FILE* pFile , LinkedList* pArrayListEmployee)
 	}
 	return retorno;
 }
+
+
+int controller_listaPorEstadoVuelo(void* pArrayListPassenger)
+{
+	int retorno=-1;
+	char auxEstado[51];
+	if(pArrayListPassenger!=NULL)
+	{
+		if(Passenger_getCodigoVuelo(pArrayListPassenger, auxEstado)==RETORNOPOSITIVO)
+		{
+			retorno=strcmp(auxEstado,"BA2491A");
+
+		}
+	}
+	return retorno;
+}
+
+int controller_contadorPasajerosPorClase(void* pArrayListPassenger)
+{
+	int retorno;
+	char auxClase[51];
+	if(pArrayListPassenger!=NULL)
+	{
+		if(Passenger_getTipoPasajero(pArrayListPassenger, auxClase)==RETORNOPOSITIVO)
+		{
+			//"FirstClass","ExecutiveClass","EconomyClass"
+			if(strcmp(auxClase,"FirstClass")==0)
+			{
+				retorno=1;
+			}
+			if(strcmp(auxClase,"ExecutiveClass")==0)
+			{
+				retorno=2;
+			}
+			if(strcmp(auxClase,"EconomyClass")==0)
+			{
+				retorno=3;
+			}
+
+		}
+	}
+	return retorno;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
