@@ -56,7 +56,8 @@ int main()
     	 		"Opcion 8: Guardar los datos de los pasajeros en el archivo data.csv (modo texto).\n"
     			"Opcion 9: Guardar los datos de los pasajeros en el archivo data.csv (modo binario).\n"
     			"Opcion 10: Salir\n"
-    			"Opcion 11: Informes\n"
+    			"Opcion 11: Codigos de vuelo BA2491A\n"
+    			"Opcion 12: Cantidades por tipo"
     			,"", "Error al ingresar Opcion. Desea reintentar?Ingrese SI si desea continuar.\n", MINIMOOPCION,
 				MAXIMOOPCION, REINTENTOS)==RETORNOPOSITIVO)
     	{
